@@ -54,9 +54,8 @@ router.get('/new', middleware.checkAdmin, function(req,res){
     res.render('./movies/new.ejs');
 });
 
-router.post('/new', upload.fields([{ name: 'image' }, { name: 'logo' }, { name: 'banner' } ]), function(req, res){
+router.post('/new', upload.fields([{ name: 'image' }, { name: 'banner' } ]), function(req, res){
     req.body.movies.image = '/images/movies/uploads/' + req.files['image'][0].filename;
-    req.body.movies.logo = '/images/movies/uploads/' + req.files['logo'][0].filename;
     req.body.movies.banner = '/images/movies/uploads/' + req.files['banner'][0].filename;
     Movies.create(req.body.movies, function(err, newMovies){
         if(err){
