@@ -1,0 +1,127 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+    </style>
+      <div class="container-fluid text-dark px-3 pt-4" style=" margin-top: 0%;height: 290px;background-image: linear-gradient(to right, #459ced, #4ba3ee, #52aaef, #5ab0f0, #63b7f1, #65bef1, #6ac5f0, #71cbef, #78d2ec, #82d9e8, #8fdfe5, #9ee5e2);">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+        <center>
+        <h5 style="color: rgb(255, 255, 255); text-transform: uppercase; font-size:50px; font-family: 'Staatliches', cursive;">
+        Now Showing
+        
+        </h5>
+        <div class="dropdown">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Genre
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="/movies/genre/action">Action</a></li>
+                <li><a class="dropdown-item" href="/movies/genre/comedy">Comedy</a></li>
+                <li><a class="dropdown-item" href="/movies/genre/drama">Drama</a></li>
+                <li><a class="dropdown-item" href="/movies/genre/fantasy">Fantasy</a></li>  
+                <li><a class="dropdown-item" href="/movies/genre/sci-fi">Sci-fi</a></li>
+                <li><a class="dropdown-item" href="/movies/genre/thriller">Thriller</a></li>
+                
+                
+                
+            </ul>
+        </div>
+        
+        <br>
+        <h1 style="color: white;">|</h1>
+       
+        <h7 style="color: rgb(255, 255, 255); font-size: 20px; font-weight:normal; margin-top: -20px;">
+            <% if ( sort=='All' ) { %>
+                 All Movies
+                <% } else { %>
+                   <%= sort %>
+                        <% } %>
+        
+        </h7>
+      </center>
+    </div>
+<br>
+<div class="container" style="padding:20px; margin-top:10px; background-color: white; margin-top: -50px;">
+    <div class="row">
+        <% var i = 0; %>
+        <% Movies.forEach(function(movie){ %>
+        <div class="col-sm-12 col-md-4 col-lg-4" style="margin-top: 20px;">
+   
+            <div class="card" style="width:100%; box-shadow: 0px 10px 10px #888888;">
+                <a href="/movies/<%= movie._id %>"><img class="card-img-top" src="<%= movie.image %>"style="width:100%; height:500px;"></a>
+                <div class="card-body">
+                  <center><h4 class="card-title" style="font-weight: bold;"><%= movie.name %></h4></center>
+                  <p class="card-text">
+
+                    
+                    <% if(!currentUser) {%>
+                        <% } else if ( currentUser.priority=='admin' || currentUser.priority=='master' ) { %>
+                            <div class="row">
+                                <div class="col-6">
+                                    <a  href="/movies/<%= movie._id %>/edit">
+                                        <button class="btn btn-outline-primary btn-light"
+                                            style="height: 45px;width:100%;  margin-bottom: 10px;">Edit</button>
+                                    </a>
+                                    </div>
+                                    <div class="col-6">
+                                    <!-- <form  action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-outline-danger btn-light"
+                                            style="height: 45px; width:100%; margin-bottom: 10px;">Delete</button>
+                                    </form> -->
+                                    <form  action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>" style="height: 45px;width:100%;  margin-bottom: 10px;">Delete</button>
+                                        <div class="modal fade" id="deleteModal<%= i %>" tabindex="-1">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title ed-mol" >Delete Movies</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                                    </div>
+                                                    <div class="modal-body" style="color: black;">
+                                                        Do you want to delete <%= Movies.name %> ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <% } %>
+                  </p>
+                </div>
+              </div>
+         
+        </div>
+        <%  i++; }); %>
+     
+</div>
+</div>
+
+  <% if(!currentUser) {%>
+    <% } else if ( currentUser.priority=='admin' || currentUser.priority=='master' ) { %>
+        <div class="" style="height: 120px;">
+            <p class="d-flex justify-content-center mt-4">
+                <a href="/movies/new">
+                    <button type="button" class="btn btn-outline-dark" style="height: 50px; width: 600px;">Add new
+                        Movies</button>
+                </a>
+            </p>
+            &emsp;
+        </div>
+        <% } %>
+   
+
+    
+           
+               
+
+                <%- include('../partials/footer.ejs') %>

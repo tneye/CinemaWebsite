@@ -1,0 +1,90 @@
+
+/* @import url('https://fonts.googleapis.com/css2?family=Girassol&family=Roboto&display=swap'); */
+
+
+body{
+    /* background-image: url("http://cdn29.us1.fansshare.com/images/wallpapersforios7/random-wallpapers-ios-background-wallpaper-cool-wallpapers-928078759.jpg");  */
+   width: 100%;
+   background-color: whitesmoke;
+    
+}
+
+#form{
+
+    width: 500px;
+    height: 450px;
+    margin:0px auto; 
+    padding: 0px auto;
+    margin-top:100px;
+    padding-top: 40px;
+    
+ 
+
+}
+#head{
+    color:rgb(0, 0, 0);
+    font-family: 'Girassol', cursive;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.8em;
+    padding-left: 125px;
+
+}
+#inside-form{
+    width: 350px;
+    height: 350px;
+    margin: 0px auto;   
+
+}
+.input{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(185, 185, 185);
+    margin: 10px;
+    width: 300px;
+    height: 35px;
+    border-radius: 10px;
+    padding-left: 10px;
+    color:rgb(0, 0, 0);
+    font-weight: lighter;
+    outline: none;
+
+}
+.input:hover{
+
+    box-shadow: inset -2px -2px 7px rgb(133, 133, 133);
+}
+#remember{
+    color: white;
+    padding-left: 13px;
+}
+#forget{
+    padding-left: 32px;
+    color: white;
+
+}
+#submit{
+    margin-top: 35px;
+    width: 250px;
+    height: 35px;
+    background-color:  rgb(4, 75, 116);
+    color: white;
+    font-size: 0.9em;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.submit{
+    padding-left: 40px;
+
+}
+#submit:hover{
+    background-color: rgb(126, 14, 14);
+}
+.account{
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    padding-left: 60px;
+    font-size: 1.0em;
+}
+
+.account:hover{
+   color: rgb(82, 82, 82); 
+}

@@ -1,0 +1,139 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif} */
+    
+    body, html {
+      height: 100%;
+      background-color: whitesmoke;
+      
+    }
+    
+    /* Full height image header */
+    .bgimg-1 {
+      background-position: center;
+      background-size: cover;
+      background-image: url("https://www.mdsci.org/wp-content/uploads/2018/12/IMAX-banner-2.jpg");
+      min-height: 100%;
+      z-index: 1;
+    }
+    
+    
+    </style>
+
+ <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home" >
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Theater Detail </span><br>
+    <p><a href="#cinema" class="w3-button w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off" style="margin-left: 50px;">See All Cinema</a></p>
+  </div> 
+</header>
+
+<!-- <div class="container-fluid d-flex flex-row px-3 pt-4" style="height: 75px; background-color: rgb(255, 255, 255);">
+    &emsp;
+    <h5 style="color: rgb(0, 0, 0); text-transform: uppercase;">
+        <span class="dot" style="background-color: rgb(133, 0, 138); margin-bottom: 1px;"></span>
+      All Cinemas
+    </h5>
+</div> -->
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px;  " id="about">
+  
+    <h2 class="w3-center" style="font-weight: bolder;" >ABOUT THE CINEMA</h2>
+    <p class="w3-center w3-large">let's see our cinema and enjoy!</p>
+     <div class="w3-container" style="color:black; padding:70px 30px; margin:10%; justify-items: center; border-radius: 20px; background-color: white;">
+      <div class="w3-row-padding" >
+        <div class="w3-col m6" style="margin-top: 5px; ">
+          <h1 style="font-weight: 400px;">The best exprerient</h1>
+          <p style="font-size: 20px;">เราคือผู้มอบประสบการณ์บันเทิงที่มุ่งเน้นความเป็นเลิศ ด้วยการใส่ใจทุกรายละเอียดตั้งแต่ก้าวแรกจนก้าวสุดท้าย 
+          พร้อมคัดสรรภาพยนตร์ชั้นเยี่ยมและแปลกใหม่ อีกทั้งมุ่งเฟ้นหานวัตกรรมบันเทิงสุดพิเศษ และเหนืออื่นใดคือ 
+          การพัฒนางานด้านบริการให้ดีที่สุดเพื่อให้มั่นใจว่าทุกช่วงเวลาของคุณที่ เอส เอฟ จะมีแต่ความประทับใจ 
+          และความสุขอย่างแท้จริง</p>
+        </div>
+        <div class="w3-col m6">
+          <img class="w3-image w3-round-large" src="https://cdn.benzinga.com/files/imagecache/1024x768xUP/images/story/2012/imax.png"  style="width:80%; height:90%; justify-items: center; align-items: center;" width="700" height="300">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Cinemas Detail -->
+<!-- Location Section -->
+<div class="w3-container w3-padding-64" style="background-color: white;">
+    <h2 class="w3-center" id = "cinema" style="margin-bottom: 5%; font-weight: bolder;">CINEMA</h2>
+    <div class="w3-row-padding">
+      <div class="w3-col m12">
+
+
+<div class="container-fluid">
+    <div class="row row-cols-3 align-items-stretch py-2 mx-3">
+        <% var i = 0; %>
+        <% Cinemas.forEach(function(cinema){ %>
+            <div class="col-6" style=" margin-bottom:5%">
+                <div class="card card-cover text-white bg-dark rounded-5 shadow-lg" style="height: 350px;">
+                    <% if(!currentUser) {%>
+                    <% } else if ( currentUser.priority == 'admin' || currentUser.priority == 'master' ) { %>
+                        <div class="row" style="top: 25px; right: 15px; position: absolute;">
+                            <a class="col" href="/cinemas/<%= cinema._id %>/edit">
+                                <button class="btn btn btn-outline-primary btn-light" style="height: 45px;width:100%;">Edit</button>
+                            </a>
+                            <form class="col" action="/cinemas/<%= cinema._id %>?_method=DELETE" method="POST">
+                              <button class="btn btn btn-outline-danger btn-light" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>" style="height: 45px;width:100%;  margin-bottom: 10px;">Delete</button>
+                              <div class="modal fade" id="deleteModal<%= i %>" tabindex="-1">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <div class="modal-header">
+                                              <h5 class="modal-title ed-mol" >Delete Cinema</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                          </div>
+                                          <div class="modal-body" style="color: black;">
+                                              Do you want to delete <b><%= Cinemas.name %> ?</b>
+                                          </div>
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                              <button type="submit" class="btn btn-danger">Delete</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </form>
+                        </div>
+                    <% } %>
+                    <a href="/cinemas/<%= cinema._id %>">
+                        <img src="<%= cinema.image %>" width="100%" height="250px" style="object-fit: cover;">
+                        <center>
+                        <p  class="pt-1 text-white text-shadow-1"
+                            style="font-weight: bolder; font-size: 20px; margin: 2%; position: absolute;">
+                            
+                            <span class="text-center"style="color: rgb(255, 255, 255); text-transform: uppercase;"><%= cinema.name %>    </span>
+                            <!-- <span style="color: rgb(190, 0, 0);">  <%= cinema.slogan %> </span> -->
+                      
+                        </p>
+                      </center>
+                    </a>
+                </div>
+            </div>
+            
+        <% i++ }); %>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+<% if(!currentUser) {%>
+    <% } else if ( currentUser.priority == 'admin' || currentUser.priority == 'master' ) { %>
+    <div class="" style="height: 120px;">
+        <p class="d-flex justify-content-center mt-4">
+            <a href="/cinemas/new">
+                <button type="button" class="btn btn-outline-dark" style="height: 50px; width: 600px;">Add  Cinema</button>
+            </a>
+        </p>
+        &emsp;
+    </div>
+<% } %>
+
+
+<%- include('../partials/footer.ejs') %>

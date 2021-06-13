@@ -1,0 +1,147 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body{
+        background-color: whitesmoke;
+    }
+</style>
+
+<div class="container-fluid text-dark px-3 pt-4" style=" margin-top: 0%;height: 200px;background-image: linear-gradient(to right, #459ced, #4ba3ee, #52aaef, #5ab0f0, #63b7f1, #65bef1, #6ac5f0, #71cbef, #78d2ec, #82d9e8, #8fdfe5, #9ee5e2);">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <center>
+    <h5 id="movie"style="color: rgb(255, 255, 255); text-transform: uppercase; font-size:50px; font-family: 'Staatliches', cursive;">
+    my infomation
+    </h5>
+    
+    <h1 style="color: white;">|</h1>
+    <br>
+  </center>
+  </div>
+  <form action="/user/<%= User._id %>" method="POST" enctype="multipart/form-data">
+  <div class="w3-card w3-round w3-white">
+    <div class="w3-container">
+     <h4 class="w3-center" style="font-weight: bold;">My Profile</h4>
+     <p class="w3-center"><img src="<%= User.picture %>" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+     <center>
+     <div style="width: 250px;">
+        &nbsp;
+        <input type="file" class="form-control" name="image" accept="image/*">
+    </div>
+    <button class="btn  btn-outline-success" type="submit" style=" margin-top: 30px;">Submit</button>
+</center>
+     <hr>
+     <p style="font-size: 20px;"><i class="fa fa-user fa-fw w3-margin-right w3-text-theme"></i> <b >Username :</b> <%= User.username %></p>
+     <p style="font-size: 20px;"><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> <b>Firstname :</b> <%= User.firstname %></p>
+     <p style="font-size: 20px;"><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Lastname  :</b> <%= User.lastname %></p>
+    </div>
+   
+  </div>
+</form>
+
+
+
+<!-- <form action="/user/<%= User._id %>" method="POST" enctype="multipart/form-data">
+    <div class="container-fluid d-flex flex-row row px-3 pt-4" style="height: 360px; background-color: rgb(85, 85, 85); position: relative;">
+        &emsp;
+        <div class="col-3">
+            <img src="<%= User.picture %>" height="250px" width="250px">
+            <div style="width: 250px;">
+                &nbsp;
+                <input type="file" class="form-control" name="image" accept="image/*">
+            </div>
+        </div>
+        <div class="col container-fluid" style="height: 100%;">
+            <h5 style="font-size: 45px; color: white; text-transform: uppercase;"><%= User.username %></h5>
+            <button class="btn btn-outline-success btn-dark btn-large" type="submit" style="height: 60px; width: 130px; bottom: 15px; right: 15px; position: absolute;">Submit</button>
+        </div>
+    </div>
+</form> -->
+
+
+
+<div class="container-fluid text-dark px-3 pt-4" style=" margin-top: 0%;height: 100px;background-image: linear-gradient(to right, #459ced, #4ba3ee, #52aaef, #5ab0f0, #63b7f1, #65bef1, #6ac5f0, #71cbef, #78d2ec, #82d9e8, #8fdfe5, #9ee5e2);">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <center>
+    <h5 id="movie"style="color: rgb(255, 255, 255); text-transform: uppercase; font-size:30px; font-family: 'Staatliches', cursive;">
+    My Favorite
+    </h5>
+    <br>
+  </center>
+  </div>
+
+  <div id="band" class="col-sm-12 text-center " style="margin-top:0%; background-color: whitesmoke; width: 100%;  margin: 0px;">
+    <center>
+    <div class="row">
+        <% if ( Movies.likes == 0 ) {  %>
+            &ensp; <p class="dont-like"> You don't have a movie in your favorite. Let's add a movie to your favorite! </p> 
+        <% } else {  %>
+            <% Movies.likes.forEach(function(liked){ %>
+        
+        <div class="col-sm-3" >
+            <div class="card" style="width:80%; height:600px; margin-top: 20px; margin-bottom: 20px; box-shadow: 0px 10px 10px gray;">
+                <a href="/movies/<%= liked.movies.id %>"> <img src="<%= liked.movies.image %>" class="card-img-top" style="height:500px; object-fit: cover;"></a>
+                <div class="card-body">
+                  <center><h5 class="card-title" style="font-weight: bold;"><%= liked.movies.name %></h5></center>
+                  
+                </div>
+              </div>
+          
+        </div>
+     
+        <% }); %>
+        <% } %>
+          
+        </div>
+      </center>
+        
+    </div>
+
+    <!-- <% if ( Movies.likes == 0 ) {  %>
+        &ensp; <p class="dont-like"> You don't have a movie in your favorite. Let's add a movie to your favorite! </p> 
+    <% } else {  %>
+        <% Movies.likes.forEach(function(liked){ %>
+            <div class="col">
+                <a href="/movies/<%= liked.movies.id %>" class="detail">
+                    <div class="card shadow-sm" style="width: 16rem;">
+                        <img src="<%= liked.movies.image %>" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= liked.movies.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= liked.date %>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        <% }); %>
+    <% } %> -->
+<!-- <div class="container-fluid" style="height: 330px; background-color: white">
+    <div class="row row-cols-3 align-items-stretch py-2 mx-3">
+        <% Movies.likes.forEach(function(liked){ %>
+            <div class="col" style="width: 100%">
+                <div class="card card-cover text-white bg-dark rounded-5 shadow-lg">
+                    <a href="/movies/<%= liked.movies.id %>">
+                        <div class="row">
+                            <div class="col-2 mx-3">
+                                <img src="<%= liked.movies.logo%>" width="100%" style="max-height: 150px; margin-top: 50px;">
+                            </div>
+                            <div class="col">
+                                <img src="<%= liked.movies.banner %>" width="100%" height="250px" style="object-fit: cover; border-radius: 5px;">
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            &nbsp;
+        <% }); %>
+    </div>
+</div> -->
+
+<%- include('../partials/footer.ejs') %>

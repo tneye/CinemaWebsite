@@ -1,0 +1,101 @@
+<%- include('../partials/header.ejs') %>
+
+<!-- Banner -->
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    body{
+        background-color: whitesmoke;
+    }
+    input[placeholder], [placeholder], *[placeholder] {
+    color: rgb(126, 126, 126) !important;
+}
+</style>
+<div class="container-fluid " style="background-image: linear-gradient(to right, #459ced, #4ba3ee, #52aaef, #5ab0f0, #63b7f1, #65bef1, #6ac5f0, #71cbef, #78d2ec, #82d9e8, #8fdfe5, #9ee5e2); height:120px">
+    <br>
+    <center> <h5 style="color: white; text-transform: uppercase; font-weight: bold; font-size: 40px;">
+
+        Create Movies
+    </h5>
+    <p style="color: white; text-transform: uppercase; font-weight: bold;">|</p></center>
+   
+
+</div>
+
+<center>
+   
+      <form class="w3-container w3-card-4  w3-white"action="/movies/new" method="POST" enctype="multipart/form-data" style="width: 80%; margin: 0px; padding: 50px;">
+        <div class="w3-col mt-5">
+          <div class="w3-section" style="width: 100%;">      
+              <label style="float: left;">Name</label>
+              <input class="w3-input" type="text"  name="movies[name]" placeholder="Movie's Name" required="required">
+            </div>
+            <div class="w3-section">      
+              <label style="float: left;">Desc</label>
+              <input  class="w3-input" type="text"  name="movies[desc]" placeholder="Movie's Desc" required="required">
+            </div>
+            <div class="w3-section">      
+              <label style="float: left;">Genre</label>
+              <input class="w3-input" type="text" name="movies[genre]" placeholder="Movie's type" required="required">
+            </div>
+            <div class="w3-section">      
+                <label style="float: left;">Director</label>
+                <input class="w3-input" type="text" name="movies[director]" placeholder="Director" required="required">
+              </div>
+              <div class="w3-section">      
+                <label style="float: left;">Date</label>
+                <input class="w3-input" type="text" name="movies[date]" placeholder="Date (October 17, 2000)" required="required">
+              </div>
+              <div class="w3-section">      
+                <label style="float: left;">Time</label>
+                <input class="w3-input" type="text" name="movies[runtime]" placeholder="Time (110)"required="required">
+              </div>
+              <div class="w3-section">      
+                <label style="float: left;">Rating</label>
+                <input class="w3-input" type="text" name="movies[score]" placeholder="Rating of movie (1.0)" required="required">
+              </div>
+              <div class="w3-section">      
+                <label style="float: left;">Synopsis</label>
+                <input class="w3-input" type="url"name="movies[trailer]" placeholder="Synopsis/trailer" required="required">
+              </div>
+              <div class="w3-section">      
+                <label style="float: left;">Type</label>
+                <input class="w3-input" type="url"name="movies[type]" placeholder="type(nowshow/coming)" required="required">
+              </div>
+             
+       
+        
+              <div>
+                <!-- <div class="mb-3">
+                    <label class="form-label" style="float: left; margin-top: 20px; margin-bottom: 20px;">Trailer</label>
+                    <input type="url" class="form-control" name="movies[trailer]" placeholder="<%= Movies.trailer %>" value="<%= Movies.trailer %>">
+                </div>        -->
+
+               
+                  <div class="mb-3">
+                      <label class="form-label" style="float: left;margin-top: 20px; margin-bottom: 20px;">Poster</label>
+                      <input type="file" class="form-control" name="image" accept="image/*"  required="required">
+                  </div>
+                  <div class="mb-3">
+                      <label class="form-label" style="float: left;margin-top: 20px; margin-bottom: 20px;">Picture</label>
+                      <input type="file" class="form-control" name="banner" accept="image/*"  required="required">
+                  </div>
+                  
+              </div>
+            <div class="container-fluid" style="height: 100%; position: relative;">
+              <button class="btn btn-outline-primary" type="submit" style="height: 50px; width: 100px; top: 15px;  ">Submit</button>
+          </div>
+        </div>
+      </form>
+   
+  </center>
+
+
+
+
+
+<%- include('../partials/footer.ejs') %>

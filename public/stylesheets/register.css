@@ -1,0 +1,85 @@
+body{
+    
+    background-color:black ;  
+}
+
+#form{
+
+    width: 550px;
+    height: 600px;
+    background-color:rgba(206, 148, 148, 0.3);
+    border-radius: 10px;
+    margin:0px auto; 
+    margin-top:40px;
+    padding-top: 30px;
+    box-shadow: 2px 2px 10px white;
+}
+#head{
+    
+    color:white;
+    font-family: 'Yatra One', cursive;
+    font-size: 2.8em;
+    padding-left: 90px;
+    
+}
+#inside-form{
+    width: 350px;
+    height: 350px;
+    margin: 0px auto;   
+}
+.input{
+    background-color: rgb(248, 206, 206);
+    border: 1px solid rgb(221, 126, 126);
+    margin: 10px;
+    width: 300px;
+    height: 35px;
+    border-radius: 10px;
+    padding-left: 10px;
+    color:rgb(59, 5, 5);
+    text-shadow:  2px 2px  rgb(241, 231, 231);
+    font-weight: lighter;
+    outline: none;
+   
+} 
+.input:hover{
+   
+    box-shadow: inset -2px -2px 7px rgb(145, 44, 77);
+}  
+#checkbox{
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.one{
+    color: white;
+}
+.two{
+    color: rgb(243, 190, 91);
+}
+.two:hover{
+   color: rgb(253, 196, 39); 
+   text-shadow: 1px 1px 2px rgb(250, 250, 160);
+}
+#alredy{
+    margin-left: 45px;
+    margin-bottom: 20px;
+}
+#submit{
+    margin-top: 10px;
+    width: 250px;
+    height: 35px;
+    background-color:  rgb(53, 142, 224);
+    border: rgb(53, 142, 224);
+    color: white;
+    font-size: 0.9em;
+    box-shadow: 2px 2px 5px rgb(221, 156, 156);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.submit{
+    margin-left: 40px;
+   
+}
+#submit:hover{
+    background-color: rgb(17, 119, 235);
+}

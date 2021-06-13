@@ -1,0 +1,16 @@
+.btn btn-default dropdown-toggle{
+    width: 100%;
+    border:transparent;
+}
+.caret{
+    float: right; 
+    margin-top: 10px;
+}
+.butdrop{
+    border:transparent; 
+    height:50px; 
+    width:70%;
+    border-top: 0px; 
+    border-bottom: 1px solid black; 
+    background-color: transparent;
+}
