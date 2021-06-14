@@ -83,7 +83,7 @@ router.put('/:id', upload.fields([{ name: 'image' }, { name: 'logo' }]), functio
         }
     });
 });
-//  End of Edit
+
 
 //  Delete
 router.delete('/:id', function(req, res){
@@ -96,7 +96,7 @@ router.delete('/:id', function(req, res){
         }
     })
 });
-//  End of delete
+
 
 //  Show
 //exec = execute ใช้ฟังชั่นต่อ

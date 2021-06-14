@@ -8,7 +8,6 @@ const   express         = require('express'),
         methodOverride  = require('method-override'),
         passport        = require('passport'),
         LocalStrategy   = require('passport-local'),
-        
         User            = require('./models/user'),
         seedDB          = require('./seeds');
 

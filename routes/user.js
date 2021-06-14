@@ -23,7 +23,6 @@ var express = require('express'),
     Reserve     = require('../models/reserve'),
     User        = require('../models/user');
 
-// ------------------ ADMIN ------------------
 
 router.get('/admin', middleware.checkAdmin, function (req, res) {
     User.find({ priority: 'user' }, function (err, allUser) {
@@ -55,8 +54,8 @@ router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
         }
     });
 });
-// End of Grant Admin
 
+//delete
 
 router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
     User.findByIdAndDelete(req.params.id, function(err, result) {
