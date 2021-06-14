@@ -26,7 +26,7 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use(flash());
 app.set('view engine', 'ejs');
-seedDB();
+// seedDB();
 
 //Settings Passport
 app.use(require('express-session')({
@@ -57,5 +57,5 @@ app.use('/session', sessionRoutes);
 app.use('/movies/:id/comments', commentRoutes);
 
 app.listen(3000, function(){
-    console.log('Server is running.');
+    console.log('Emprissed is coming.');
 });

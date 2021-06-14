@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-    /* body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif} */
+  
     
     body, html {
       height: 100%;
@@ -30,13 +30,7 @@
   </div> 
 </header>
 
-<!-- <div class="container-fluid d-flex flex-row px-3 pt-4" style="height: 75px; background-color: rgb(255, 255, 255);">
-    &emsp;
-    <h5 style="color: rgb(0, 0, 0); text-transform: uppercase;">
-        <span class="dot" style="background-color: rgb(133, 0, 138); margin-bottom: 1px;"></span>
-      All Cinemas
-    </h5>
-</div> -->
+
 
 <!-- About Section -->
 <div class="w3-container" style="padding:128px 16px;  " id="about">
@@ -72,9 +66,9 @@
         <% var i = 0; %>
         <% Cinemas.forEach(function(cinema){ %>
             <div class="col-6" style=" margin-bottom:5%">
-                <div class="card card-cover text-white bg-dark rounded-5 shadow-lg" style="height: 350px;">
+                <div class="card card-cover  bg-white rounded-5 shadow-lg" style="height: 350px; color: black; box-shadow: 0px 10px 10px #000000;">
                     <% if(!currentUser) {%>
-                    <% } else if ( currentUser.priority == 'admin' || currentUser.priority == 'master' ) { %>
+                    <% } else if ( currentUser.priority == 'admin' ) { %>
                         <div class="row" style="top: 25px; right: 15px; position: absolute;">
                             <a class="col" href="/cinemas/<%= cinema._id %>/edit">
                                 <button class="btn btn btn-outline-primary btn-light" style="height: 45px;width:100%;">Edit</button>
@@ -107,8 +101,8 @@
                         <p  class="pt-1 text-white text-shadow-1"
                             style="font-weight: bolder; font-size: 20px; margin: 2%; position: absolute;">
                             
-                            <span class="text-center"style="color: rgb(255, 255, 255); text-transform: uppercase;"><%= cinema.name %>    </span>
-                            <!-- <span style="color: rgb(190, 0, 0);">  <%= cinema.slogan %> </span> -->
+                            <span class="text-center" style="color: rgb(0, 0, 0); text-transform: uppercase;"><%= cinema.name %>    </span>
+                          
                       
                         </p>
                       </center>
@@ -124,7 +118,7 @@
 </div>
 
 <% if(!currentUser) {%>
-    <% } else if ( currentUser.priority == 'admin' || currentUser.priority == 'master' ) { %>
+    <% } else if ( currentUser.priority == 'admin'  ) { %>
     <div class="" style="height: 120px;">
         <p class="d-flex justify-content-center mt-4">
             <a href="/cinemas/new">

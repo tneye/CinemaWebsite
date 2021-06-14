@@ -1,5 +1,4 @@
 var User        = require('../models/user');
-
 var middlewareObj = {};
 
 middlewareObj.checkProfileOwner = function(req, res, next){
@@ -24,7 +23,7 @@ middlewareObj.checkAdmin = function(req, res, next){
                 req.flash('error', 'Sorry!! You can not acess this page.');
                 res.redirect('back');
             } else {
-                if( currentUser.priority === 'admin' || currentUser.priority === 'master' ){
+                if( currentUser.priority === 'admin' ){
                     return next();
                 } else{
                     req.flash('error', 'Sorry!! You can not acess this page.');

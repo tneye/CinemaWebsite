@@ -15,7 +15,7 @@ router.get('/', function(req, res){
                 if(err){
                     console.log(err);
                 } else {
-                    res.render('./index/home.ejs', {Movies: allMovies, Sort: sortMovies});
+                    res.render('./index/index.ejs', {Movies: allMovies, Sort: sortMovies});
                 }
             });
         }
@@ -37,7 +37,7 @@ router.post('/register', function(req, res){
             return res.render('./index/register');
         } else { //ตัวที่ไม่รู้พาส
             passport.authenticate('local')(req, res, function(){
-                req.flash('success', 'You have been registered!' + user.username);
+                req.flash('success', 'You have been registered!  ' + user.username);
                 res.redirect('/');
             });
         }

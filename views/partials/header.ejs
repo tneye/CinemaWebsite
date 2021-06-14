@@ -33,9 +33,9 @@
                         <a href=""  class="d-block  text-decoration-none  mx-3 nav-link mx-3" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" >Movies</a>
                         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
                             
-                            <li><a class="dropdown-item" href="/movies">Nowshowing</a></li>
+                            <li><a class="dropdown-item" href="/movies">Now Showing</a></li>
                             <center><li><hr class="dropdown-divider" style="width: 80%; color: rgb(180, 180, 180);"></li></center>
-                            <li><a class="dropdown-item" href="/movies/coming">Comingsoon</a></li>
+                            <li><a class="dropdown-item" href="/movies/coming">Coming Soon</a></li>
                             
                          
                         </ul>
@@ -53,32 +53,34 @@
                 <div class="text-end">
                         <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In / Sign Up</button>
                 </div>
-                <% } else if ( currentUser.priority == 'admin' || currentUser.priority == 'master' ) { %>
+                <% } else if ( currentUser.priority == 'admin'  ) { %>
                 <div class="dropdown text-end dropdown-pull-right btn-group">
                     <a href="" class="d-block  text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="<%= currentUser.picture %>" alt="mdo" width="32" height="32" class="rounded-circle ">
                         &nbsp; Admin
                     </a>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        
+                      <li style="color: rgb(119, 119, 119);"><b>&nbsp; &nbsp; &nbsp;Welcome! <%= currentUser.username %></b> </li>
+                      <center><li><hr class="dropdown-divider" style="width: 80%; color: rgb(180, 180, 180);"></li></center>
                         <li><a class="dropdown-item" href="/user/<%= currentUser._id %>">Profile</a></li>
-                        <li><a class="dropdown-item" href="/user/<%= currentUser._id %>/ticket">History</a></li>
-                        <li><a class="dropdown-item" href="/user/admin">Admin page</a></li>
+                        <li><a class="dropdown-item" href="/user/<%= currentUser._id %>/ticket">My Ticket</a></li>
+                        <li><a class="dropdown-item" href="/user/admin">For Admin</a></li>
                         <center><li><hr class="dropdown-divider" style="width: 80%; color: rgb(180, 180, 180);"></li></center>
-                        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                        <li><a class="dropdown-item" href="/logout"style="color: rgb(182, 4, 4);">Sign out</a></li>
                     </ul>
                 </div>
                 <% } else { %>
                 <div class="dropdown text-end dropdown-pull-right btn-group">
                     <a href="" class="d-block  text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="<%= currentUser.picture %>" alt="mdo" width="32" height="32" class="rounded-circle ">
+                        <img src="<%= currentUser.picture %>" alt="mdo" width="32" height="32" class="rounded-circle "><%= currentUser.username %>
                     </a>
                     <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                        
+                      <li style="color: rgb(119, 119, 119);"><b>&nbsp; &nbsp; &nbsp;Welcome! <%= currentUser.username %></b> </li>
+                      <center><li><hr class="dropdown-divider" style="width: 80%; color: rgb(180, 180, 180);"></li></center>
                         <li><a class="dropdown-item" href="/user/<%= currentUser._id %>">Profile</a></li>
                         <li><a class="dropdown-item" href="/user/<%= currentUser._id %>/ticket">My Ticket</a></li>
                         <center><li><hr class="dropdown-divider" style="width: 80%; color: rgb(180, 180, 180);"></li></center>
-                        <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+                        <li><a class="dropdown-item" href="/logout" style="color: rgb(182, 4, 4);">Sign out</a></li>
                     </ul>
                 </div>
                 <% } %>
@@ -86,18 +88,29 @@
         </div>
     </nav>
 
-    <% if ( error && error.length > 0 ) { %>
-        <div class="alert alert-danger" role="alert">
-            <%= error %>
-        </div>
-    <% } %>
+      
 
-    <% if ( success && success.length > 0 ) { %>
-        <div class="alert alert-success" role="alert">
-            <%= success %>
-        </div>
-    <% } %>
-
+        <% if(error && error.length > 0 ){ %>
+            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div>
+                    <%= error %>
+                </div>
+                <button type="button" class="btn-close abc" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% }%>
+    
+        <% if(success && success.length > 0 ){ %>
+           <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert" style="margin-top: 10px;">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                <div>
+                    <%= success %>
+                </div>
+                <button type="button" class="btn-close abc" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            
+        <% }%>
+    <!-- </div> -->
 
     <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -128,13 +141,12 @@
   </div>
 
   <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
+   
     function myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
     }
   
-    // Close the dropdown if the user clicks outside of it
+  
     window.onclick = function(e) {
       if (!e.target.matches('.dropbtn')) {
       var myDropdown = document.getElementById("myDropdown");

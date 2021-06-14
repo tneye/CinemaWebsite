@@ -8,7 +8,7 @@
         background-color: whitesmoke;
     }
 </style>
-<!-- Banner -->
+
 <div class="container-fluid " style="background-image: linear-gradient(to right, #459ced, #4ba3ee, #52aaef, #5ab0f0, #63b7f1, #65bef1, #6ac5f0, #71cbef, #78d2ec, #82d9e8, #8fdfe5, #9ee5e2); height:120px">
     <br>
     <center> <h5 style="color: white; text-transform: uppercase; font-weight: bold; font-size: 40px;">
@@ -20,7 +20,7 @@
 
 </div><br>
 <h2 ><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> <%= Cinemas.name %> </h2>
-<!-- End of Banner -->
+
 
 
 
@@ -53,7 +53,7 @@
     </div>
 
 
-    <!-- End of Reservation -->
+
    
     <div class="container-fluid px-3" style="height: 100%; background-color: rgb(255, 255, 255);">
         <br><br>
@@ -64,29 +64,47 @@
             <p><img class="seat" src="/images/reserve/seat.png" style="margin-top: 50px;"> <br><b style="color: rgb(96, 96, 223);">Special delux</b><br>Price = 140 bath</p></center>
             <div class="row">
                 <center>
-                    <div class="col-sm-12 col-md-4 col-lg-4" style="margin-top: 20px; background-color: whitesmoke;">
+                    <div class="col-sm-12 col-md-4 col-lg-4" style="margin-top: 20px; background-color: whitesmoke; margin-bottom:30px ;">
                         <br><h1>Reciept</h1>
                         <h3 style="color: gray;">Seat: <span id="seat" style="color: rgba(139, 0, 0, 0.719);"></span></h3>
                         <h3 style="color: gray;">Total price: <span id="price" style="color: rgba(139, 0, 0, 0.719)"></span> Baht</h3>
                         <div style="position: relative; height: 80px;">
-                        <button id="submit" type="submit" class="btn btn-primary " style="margin-top: 20px; width: 40%;">Reserve</button><br>
-                      
+                        <button id="submit" type="button" class="btn btn-primary " style="margin-top: 20px; width: 40%; " data-bs-toggle="modal" data-bs-target="#deleteModal">Reserve</button><br></center>
+
+                          <div class="modal fade" id="deleteModal" data-bs-backdrop="static" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Booking Confirm</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary">Confirm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
                        
                      
                     </div>
                  
               </div>
-                </center>
+                
                 
           </div>
             <div class="row">
             <div class="col mt-5 mb-5 mx-5 seat-block" style="background-color: rgba(179, 209, 226, 0.164);" >
-                <!-- Screen -->
+          
                 <div class="container-fluid screen" style="background-color: rgb(64, 64, 199); border-radius: 10px; width: 60%;"></div>
                 <h5 style="text-align: center;">Screen</h5>
-                <!-- End of Screen -->
+          
 
-                <!-- Seat -->
+         
                 <div class="center">
                     <!-- Row A -->
                     <div class="row mb-3">

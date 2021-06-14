@@ -53,7 +53,7 @@ router.post('/new', upload.fields([{ name: 'image' }, { name: 'logo' } ]), funct
         }
     });
 });
-//  End of New
+
 
 //  Edit
 router.get('/:id/edit', middleware.checkAdmin,  function(req, res){
@@ -61,7 +61,6 @@ router.get('/:id/edit', middleware.checkAdmin,  function(req, res){
         if(err) {
             console.log(err);
         } else {
-            req.flash('success', 'Edit success');
             res.render('./cinema/edit.ejs', {Cinemas: foundCinemas})
         }
     });
@@ -79,6 +78,7 @@ router.put('/:id', upload.fields([{ name: 'image' }, { name: 'logo' }]), functio
             console.log(err);
             res.redirect('/cinemas/')
         } else {
+            req.flash('success', 'Edit success');
             res.redirect('/cinemas/' + req.params.id);
         }
     });

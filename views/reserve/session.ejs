@@ -5,8 +5,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <% var weekday = new Array(7), month = new Array(12); %>
-<% weekday[0] = "Sun", weekday[1] = "Mon", weekday[2] = "Tues", weekday[3] = "Wed", weekday[4] = "Thurs", weekday[5] = "Fri", weekday[6] = "Sat"; %>
-<% month[0] = "Jan", month[1] = "Feb",month[2] = "Mar", month[3] = "Apr", month[4] = "May", month[5] = "June", month[6] = "July", month[7] = "Aug", month[8] = "Sept", month[9] = "Oct", month[10] = "Nov", month[11] = "Dec";  %>
+<% weekday[0] = "Sunday", weekday[1] = "Monday", weekday[2] = "Tuesday", weekday[3] = "Wedday", weekday[4] = "Thursday", weekday[5] = "Friday", weekday[6] = "Saturday"; %>
+<% month[0] = "Janury", month[1] = "Febuary",month[2] = "March", month[3] = "April", month[4] = "May", month[5] = "June", month[6] = "July", month[7] = "August", month[8] = "September", month[9] = "October", month[10] = "November", month[11] = "December";  %>
 <% var Time1 = new Date() %>
 
 <% var Time2 = new Date(Time1) %>
@@ -17,6 +17,9 @@
 
 <% var Time4 = new Date(Time3) %>
 <% Time4.setDate(Time4.getDate() + 1) %>
+
+<% var Time5 = new Date(Time4) %>
+<% Time5.setDate(Time4.getDate() + 1) %>
 
 <% var Day1 = Time1.getDay(), Month1 = Time1.getMonth(), Date1 = Time1.getDate(); %>
 <% var D1 = weekday[Day1] + ' ' + Date1 + ' ' + month[Month1]; %>
@@ -29,6 +32,9 @@
 
 <% var Day4 = Time4.getDay(), Month4 = Time4.getMonth(), Date4 = Time4.getDate(); %>
 <% var D4 = weekday[Day4] + ' ' + Date4 + ' ' + month[Month4]; %>
+
+<% var Day5 = Time4.getDay(), Month5 = Time5.getMonth(), Date5 = Time5.getDate(); %>
+<% var D5 = weekday[Day5] + ' ' + Date5 + ' ' + month[Month5]; %>
 
 <div class="container-fluid " style="background-image: linear-gradient(to right, #459ced, #4ba3ee, #52aaef, #5ab0f0, #63b7f1, #65bef1, #6ac5f0, #71cbef, #78d2ec, #82d9e8, #8fdfe5, #9ee5e2); height:120px">
     <br>
@@ -78,6 +84,7 @@
                     <option name="session[date]" value="<%= D2 %>"><%= D2 %></option>
                     <option name="session[date]" value="<%= D3 %>"><%= D3 %></option>
                     <option name="session[date]" value="<%= D4 %>"><%= D4 %></option>
+                    <option name="session[date]" value="<%= D5 %>"><%= D5 %></option>
                 </select>
                 &emsp;
             </h4>
@@ -150,8 +157,8 @@
 
 <script>
     var weekday = new Array(7), month = new Array(12);
-    weekday[0] = "Sun", weekday[1] = "Mon", weekday[2] = "Tues", weekday[3] = "Wed", weekday[4] = "Thurs", weekday[5] = "Fri", weekday[6] = "Sat";
-    month[0] = "Jan", month[1] = "Feb",month[2] = "Mar", month[3] = "Apr", month[4] = "May", month[5] = "June", month[6] = "July", month[7] = "Aug", month[8] = "Sept", month[9] = "Oct", month[10] = "Nov", month[11] = "Dec";
+    weekday[0] = "Sunday", weekday[1] = "Monday", weekday[2] = "Tuesday", weekday[3] = "Wedday", weekday[4] = "Thursday", weekday[5] = "Friday", weekday[6] = "Saturday";
+    month[0] = "Janury", month[1] = "Febuary",month[2] = "March", month[3] = "April", month[4] = "May", month[5] = "June", month[6] = "July", month[7] = "August", month[8] = "September", month[9] = "October", month[10] = "November", month[11] = "December";
 
     var currentTime = new Date();
     var hours = currentTime.getHours(), minutes = currentTime.getMinutes();
@@ -224,6 +231,10 @@
         }
         document.getElementById("selectDay2").value = checkSelectDay;
         document.getElementById("selectDay3").value = checkSelectDay;
+        document.getElementById("selectDay4").value = checkSelectDay;
+        document.getElementById("selectDay5").value = checkSelectDay;
+
+
     }
 </script>
 

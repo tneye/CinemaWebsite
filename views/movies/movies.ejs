@@ -20,6 +20,7 @@
                 Genre
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="/movies">All movie</a></li>
                 <li><a class="dropdown-item" href="/movies/genre/action">Action</a></li>
                 <li><a class="dropdown-item" href="/movies/genre/comedy">Comedy</a></li>
                 <li><a class="dropdown-item" href="/movies/genre/drama">Drama</a></li>
@@ -60,7 +61,7 @@
 
                     
                     <% if(!currentUser) {%>
-                        <% } else if ( currentUser.priority=='admin' || currentUser.priority=='master' ) { %>
+                        <% } else if ( currentUser.priority=='admin'  ) { %>
                             <div class="row">
                                 <div class="col-6">
                                     <a  href="/movies/<%= movie._id %>/edit">
@@ -69,10 +70,6 @@
                                     </a>
                                     </div>
                                     <div class="col-6">
-                                    <!-- <form  action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
-                                        <button class="btn btn-outline-danger btn-light"
-                                            style="height: 45px; width:100%; margin-bottom: 10px;">Delete</button>
-                                    </form> -->
                                     <form  action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
                                         <button class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>" style="height: 45px;width:100%;  margin-bottom: 10px;">Delete</button>
                                         <div class="modal fade" id="deleteModal<%= i %>" tabindex="-1">
@@ -107,7 +104,7 @@
 </div>
 
   <% if(!currentUser) {%>
-    <% } else if ( currentUser.priority=='admin' || currentUser.priority=='master' ) { %>
+    <% } else if ( currentUser.priority=='admin'  ) { %>
         <div class="" style="height: 120px;">
             <p class="d-flex justify-content-center mt-4">
                 <a href="/movies/new">

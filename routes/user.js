@@ -57,20 +57,6 @@ router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
 });
 // End of Grant Admin
 
-// Forfeit Admin
-router.post('/admin/forfeit/:id', middleware.checkAdmin, function (req, res) {
-    User.findByIdAndUpdate(req.params.id,{priority: 'user'},function (err, result) {
-        if (err) {
-            console.log(err);
-            req.flash('error', 'Forfeit fail!');
-        } else {
-            console.log("Updated User : ", result);
-            req.flash('success', 'Forfeit success!');
-            res.redirect('back');
-        }
-    });
-});
-// End of Forfeit Admin
 
 router.post('/admin/delete/:id', middleware.checkAdmin, function (req, res) {
     User.findByIdAndDelete(req.params.id, function(err, result) {

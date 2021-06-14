@@ -65,7 +65,7 @@ router.post('/new', upload.fields([{ name: 'image' }, { name: 'banner' } ]), fun
         }
     });
 });
-//  End of New
+
 
 //  Edit
 router.get('/:id/edit', middleware.checkAdmin,  function(req, res){
@@ -90,11 +90,12 @@ router.put('/:id', upload.fields([{ name: 'image' },  { name: 'banner' } ]), fun
             console.log(err);
             res.redirect('/movies/')
         } else {
+            req.flash('success', 'Edit success');
             res.redirect('/movies/' + req.params.id);
         }
     });
 });
-//  End of Edit
+
 
 //  Delete
 router.delete('/:id', function(req, res){
@@ -106,7 +107,7 @@ router.delete('/:id', function(req, res){
         }
     })
 });
-//  End of delete
+
 
 //  Genre
 router.get('/genre/:genre', function(req,res){
