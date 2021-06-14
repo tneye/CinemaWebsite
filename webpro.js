@@ -1,7 +1,7 @@
 const { db } = require('./models/user');
 
 const   express         = require('express'),
-        app             = express(),
+        webpro           = express(),
         bodyParser      = require('body-parser'),
         mongoose        = require('mongoose'),
         flash           = require('connect-flash'),
@@ -20,26 +20,26 @@ var indexRoutes = require('./routes/index'),
     userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb://localhost/Movies');
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static('public'));
-app.use(methodOverride('_method'));
-app.use(flash());
-app.set('view engine', 'ejs');
+webpro .use(bodyParser.urlencoded({extended: true}));
+webpro .use(express.static('public'));
+webpro .use(methodOverride('_method'));
+webpro .use(flash());
+webpro .set('view engine', 'ejs');
 // seedDB();
 
 //Settings Passport
-app.use(require('express-session')({
+webpro .use(require('express-session')({
     secret: 'secret is always secret.',
     resave: false,
     saveUninitialized: false,
 }));
-app.use(passport.initialize());
-app.use(passport.session());
+webpro .use(passport.initialize());
+webpro .use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req, res, next){
+webpro .use(function(req, res, next){
     res.locals.currentUser  = req.user;
     res.locals.error        = req.flash('error');
     res.locals.success      = req.flash('success');
@@ -47,14 +47,14 @@ app.use(function(req, res, next){
 });
 
 //  Routes
-app.use('/', indexRoutes);
-app.use('/movies', moviesRoutes);
-app.use('/cinemas', cinemasRoutes);
-app.use('/user', userRoutes);
-app.use('/reserve', reserveRoutes);
-app.use('/session', sessionRoutes);
-app.use('/movies/:id/comments', commentRoutes);
+webpro .use('/', indexRoutes);
+webpro .use('/movies', moviesRoutes);
+webpro .use('/cinemas', cinemasRoutes);
+webpro .use('/user', userRoutes);
+webpro .use('/reserve', reserveRoutes);
+webpro .use('/session', sessionRoutes);
+webpro .use('/movies/:id/comments', commentRoutes);
 
-app.listen(3000, function(){
+webpro .listen(3000, function(){
     console.log('Emprissed is coming.');
 });

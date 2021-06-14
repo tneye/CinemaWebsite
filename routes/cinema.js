@@ -14,7 +14,7 @@ var express = require('express'),
     }),
     imageFilter = function (req, file, callback) {
         if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
-            return callback(new Error('Only JPG, jpeg, PNG and GIF image files are allowed!'), false);
+            return callback(new Error('Can put only JPG , jpeg , png , GIF image files!'), false);
         }
         callback(null, true);
     },
@@ -27,11 +27,11 @@ var express = require('express'),
     User    = require('../models/user');
 
 router.get('/', function(req,res){
-    Cinemas.find({}, function(err, allCinemas){
+    Cinemas.find({}, function(err, ShowCinemas){
         if(err){
             console.log(err);
         } else {
-            res.render('./cinema/cinema.ejs', {Cinemas: allCinemas});
+            res.render('./cinema/cinema.ejs', {Cinemas: ShowCinemas});
         }
     });
 });
@@ -48,8 +48,23 @@ router.post('/new', upload.fields([{ name: 'image' }, { name: 'logo' } ]), funct
         if(err){
             console.log(err);
         } else {
-            req.flash('success', 'Uploat success!');
+            req.flash('success', 'You are upload success!');
             res.redirect('/cinemas');
+        }
+    });
+});
+//  Search cinema
+router.post('/search', function(req,res){
+    var name = req.body.search;
+    res.redirect('/cinemas/search/' + name + '#cinema');
+});
+
+router.get('/search/:name', function(req,res){
+    Cinemas.find({name: new RegExp(req.params.name, 'i')}, function(err, foundCinemasname){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('./cinema/cinema.ejs', {Cinemas: foundCinemasname, sort: req.params.name});
         }
     });
 });
@@ -78,7 +93,7 @@ router.put('/:id', upload.fields([{ name: 'image' }, { name: 'logo' }]), functio
             console.log(err);
             res.redirect('/cinemas/')
         } else {
-            req.flash('success', 'Edit success');
+            req.flash('success', 'Edit success!');
             res.redirect('/cinemas/' + req.params.id);
         }
     });
@@ -98,7 +113,7 @@ router.delete('/:id', function(req, res){
 });
 
 
-//  Show
+//  info
 //exec = execute ใช้ฟังชั่นต่อ
 router.get('/:id', function(req,res){
     Cinemas.findById(req.params.id).exec(function(err, foundCinemas){

@@ -13,7 +13,7 @@ var express = require('express'),
     }),
     imageFilter = function (req, file, callback) {
         if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
-            return callback(new Error('Only JPG, jpeg, PNG and GIF image files are allowed!'), false);
+            return callback(new Error('Can put only JPG , jpeg , png , GIF image files!'), false);
         }
         callback(null, true);
     },
@@ -163,7 +163,7 @@ router.get('/:id', function(req,res){
     });
 });
 
-router.post('/:id/like', middleware.isLoggedIn, function(req, res){
+router.post('/:id/favorite', middleware.isLoggedIn, function(req, res){
     User.findById(req.user._id, function(err, foundUsers){
         if(err){
             console.log(err);
@@ -194,7 +194,7 @@ router.post('/:id/like', middleware.isLoggedIn, function(req, res){
     });
 });
 
-router.post('/:id/unlike', middleware.isLoggedIn, function(req, res){
+router.post('/:id/unfavorite', middleware.isLoggedIn, function(req, res){
     User.update( {_id: req.user._id}, { $pull: { likes: req.params.id } } ).exec(function(err){
         if(err){
             console.log(err);

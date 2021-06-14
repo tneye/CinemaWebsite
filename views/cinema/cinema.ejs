@@ -3,8 +3,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-  
-    
     body, html {
       height: 100%;
       background-color: whitesmoke;
@@ -19,8 +17,6 @@
       min-height: 100%;
       z-index: 1;
     }
-    
-    
     </style>
 
  <header class="bgimg-1 w3-display-container w3-grayscale-min" id="home" >
@@ -29,8 +25,6 @@
     <p><a href="#cinema" class="w3-button w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off" style="margin-left: 50px;">See All Cinema</a></p>
   </div> 
 </header>
-
-
 
 <!-- About Section -->
 <div class="w3-container" style="padding:128px 16px;  " id="about">
@@ -56,11 +50,24 @@
 <!-- Cinemas Detail -->
 <!-- Location Section -->
 <div class="w3-container w3-padding-64" style="background-color: white;">
-    <h2 class="w3-center" id = "cinema" style="margin-bottom: 5%; font-weight: bolder;">CINEMA</h2>
+    <h2 class="w3-center" id = "cinema" style="margin-bottom:30px; font-weight: bolder;">CINEMA</h2>
     <div class="w3-row-padding">
       <div class="w3-col m12">
+        <!-- seach cinema -->
+<center>
+  <form class="col-12 col-lg-auto " style="width:80%;" action="/cinemas/search" method="POST">
+    <input type="text" id="myInput" title="Cinema's name" onkeyup="myFunction()" name="search" class="form-control form-control-dark" placeholder="Search Cinemas" style="box-sizing: border-box; background-image: url('/css/searchicon.png');
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid rgb(157, 172, 179);
+    margin-bottom: 12px; box-shadow: 0px 5px 5px rgb(194, 194, 218);" >
+  </form>
 
-
+</center>
+        
 <div class="container-fluid">
     <div class="row row-cols-3 align-items-stretch py-2 mx-3">
         <% var i = 0; %>

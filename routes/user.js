@@ -40,16 +40,15 @@ router.get('/admin', middleware.checkAdmin, function (req, res) {
     });
 });
 
-//  Grant Admin
 //รับ
 router.post('/admin/grant/:id', middleware.checkAdmin, function (req, res) {
     User.findByIdAndUpdate(req.params.id,{priority: 'admin'},function (err, result) {
         if (err) {
             console.log(err);
-            req.flash('error', 'Grant fail!');
+            req.flash('error', 'Improve fail!');
         } else {
             console.log("Updated User : ", result);
-            req.flash('success', 'Grant success!');
+            req.flash('success', 'Improve success!');
             res.redirect('back');
         }
     });
@@ -122,8 +121,6 @@ router.post('/:id', middleware.checkProfileOwner, upload.single('image'), functi
             }
         });
 });
-//  End of Change profile pic
 
-// ------------- END OF Profile ----------------
 
 module.exports = router;

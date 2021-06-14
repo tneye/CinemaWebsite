@@ -31,7 +31,17 @@ router.post('/', middleware.isLoggedIn, function(req, res){
         }
     });
 });
-
+router.put('/:id', function(req, res){
+    Comment.findByIdAndUpdate(req.params.id, req.body.comment, function( err, updatedComment ){
+        if(err) {
+            req.flash('error', 'An error occurred.');
+            console.log(err);
+        } else {
+            req.flash('success', 'Edit success.');
+            res.redirect('back');
+        }
+    });
+});
 router.delete('/:id', function(req, res){
     Comment.findByIdAndRemove(req.params.id, function(err){
         if(err){

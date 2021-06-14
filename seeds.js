@@ -4,7 +4,7 @@ var Cinemas     = require('./models/cinema.js');
 var Liked       = require('./models/liked.js');
 var User        = require('./models/user.js');
 
-var data = [
+var Moviesdata = [
     {
         name: "The Conjuring 2 ",
         image: "/images/movies/conju/pic.jpg",
@@ -159,6 +159,7 @@ var CinemaData = [
         slogan: "สุนทรียะบันเทิงเหนือระดับ กับ CINECLUB แห่งแรกในเมืองไทย  ที่สุดโรงภาพยนตร์หรูหราระดับเวิลด์คลาส โดดเด่นด้วยดีไซน์ และความสะดวกสบายสุด Exclusive พร้อมบริการระดับ 6 ดาว ",
         mapadd: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.8138126695862!2d100.56684071534698!3d13.72971950150268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f022976dad3%3A0x7a170736824af54b!2sEMPRIVE%20CINECLUB!5e0!3m2!1sen!2sth!4v1623396440481!5m2!1sen!2sth",
         seat: [ [0, 0, 0 ,0] , [0, 0, 0, 0] , [0, 0, 0, 0] ],
+        mapp:"https://goo.gl/maps/N9tipoPPdTGGhXWR7",
       
     },
     {
@@ -168,6 +169,7 @@ var CinemaData = [
         mapadd: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5412722952547!2d100.53581131483038!3d13.7461999903511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ0JzQ2LjMiTiAxMDDCsDMyJzE2LjgiRQ!5e0!3m2!1sen!2sth!4v1623400829117!5m2!1sen!2sth",
         slogan: "ล้ำโลกภาพยนตร์ กับโรงภาพยนตร์  Flagship ด้วยจำนวนโรงและความพิเศษหลากหลาย รองรับทุกไลฟ์สไตล์บันเทิง สำหรับคนรุ่นใหม่ที่ชอบความทันสมัยไม่ซ้ำใคร",
         seat: [ [0, 0, 0 ,0] , [0, 0, 0, 0] , [0, 0, 0, 0] ],
+        mapp:"https://goo.gl/maps/pwPRs7Tjr91DQU7y8",
     
     },
     {
@@ -177,6 +179,7 @@ var CinemaData = [
         mapadd: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15503.158758640744!2d100.569545!3d13.731179!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQzJzUyLjIiTiAxMDDCsDM0JzEwLjQiRQ!5e0!3m2!1sen!2sus!4v1623405551981!5m2!1sen!2sus",
         slogan: "ประสบการณ์บันเทิงใหม่ ของโรงภาพยนตร์แห่งอนาคต ครั้งแรกในเมืองไทย ที่ เอ็มควอเทียร์",
         seat: [ [0, 0, 0 ,0] , [0, 0, 0, 0] , [0, 0, 0, 0] ],
+        mapp:"https://goo.gl/maps/xzoKsfcGtDS7V9zt7",
  
     },
     {
@@ -186,11 +189,11 @@ var CinemaData = [
         mapadd: "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15502.214132203742!2d100.535349!3d13.745459!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ0JzQzLjciTiAxMDDCsDMyJzA3LjMiRQ!5e0!3m2!1sen!2sus!4v1623405891980!5m2!1sen!2sus",
         slogan: "The Best Cinema in Thailand, The Best cinema in Bangkok .",
         seat: [ [0, 0, 0 ,0] , [0, 0, 0, 0] , [0, 0, 0, 0]],
+        mapp:"https://goo.gl/maps/UP9DkeE9g5ZfYztLA",
+        
     
     },
 
-    
-   
 ]
 
 
@@ -201,12 +204,12 @@ function seedDB(){
             console.log(err);
         } else {
             console.log("Remove Movies Complete");
-            data.forEach(function(seed){
+            Moviesdata.forEach(function(seed){
                 Movies.create(seed, function(err, movie){
                     if(err){
                         console.log(err);
                     } else {
-                        console.log('Movies data added');
+                        console.log('Adding Movies data ');
                     }
                 });
             });
@@ -222,7 +225,7 @@ function seedDB(){
                     if(err){
                         console.log(err);
                     } else {
-                        console.log('Cinemas data added');
+                        console.log('Adding Cinemas data ');
                     }
                 });
             });
