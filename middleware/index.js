@@ -1,20 +1,6 @@
 var User        = require('../models/user');
 var middlewareObj = {};
 
-middlewareObj.checkProfileOwner = function(req, res, next){
-    if(req.isAuthenticated()){
-        if( req.user._id.equals(req.params.id) ){
-            return next();
-        }
-        else {
-            req.flash('error', 'Please check it again!');
-            res.redirect('/back');
-        }
-    } else {
-        req.flash('error', 'Please Login first!');
-        res.redirect('/login');
-    }
-};
 
 middlewareObj.checkAdmin = function(req, res, next){
     if(req.isAuthenticated()){
@@ -43,6 +29,21 @@ middlewareObj.isLoggedIn = function(req, res, next){
     }
     req.flash('error', 'Please Login first!');
     res.redirect('/login');
+};
+
+middlewareObj.checkProfileOwner = function(req, res, next){
+    if(req.isAuthenticated()){
+        if( req.user._id.equals(req.params.id) ){
+            return next();
+        }
+        else {
+            req.flash('error', 'Please check it again!');
+            res.redirect('/back');
+        }
+    } else {
+        req.flash('error', 'Please Login first!');
+        res.redirect('/login');
+    }
 };
 
 module.exports = middlewareObj;
